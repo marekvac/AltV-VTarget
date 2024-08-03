@@ -13,7 +13,7 @@ internal class FrontEnd
 
     public FrontEnd(VEye vEye)
     {
-        _webView = Alt.CreateWebView("http://resource/web/index.html");
+        _webView = Alt.CreateWebView("http://resource/client/web/index.html");
         _options = new();
         
         _webView.On<string>("clicked", id =>
@@ -119,6 +119,6 @@ internal class FrontEnd
     
     public void Destroy()
     {
-        _webView.Remove();
+        _webView.Destroy();
     }
 }
