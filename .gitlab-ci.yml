@@ -1,0 +1,20 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - dotnet nuget add source "${CI_API_V4_URL}/groups/${GROUP_ID}/-/packages/nuget/index.json" --name gitlab --username gitlab-ci-token --password $CI_JOB_TOKEN --store-password-in-clear-text
+    - dotnet pack -c Release
+
+deploy:
+  stage: deploy
+  script:
+    - dotnet nuget add source "${CI_API_V4_URL}/groups/${GROUP_ID}/-/packages/nuget/index.json" --name gitlab-all --username gitlab-ci-token --password $CI_JOB_TOKEN --store-password-in-clear-text
+    - dotnet pack -c Release
+    - dotnet nuget add source "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/nuget/index.json" --name gitlab-this --username gitlab-ci-token --password $CI_JOB_TOKEN --store-password-in-clear-text
+    - dotnet nuget push "MarcusCZ.AltV.VTarget.Client/bin/Release/*.nupkg" --source gitlab-this
+  only: [tags]
