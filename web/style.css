@@ -76,6 +76,12 @@ html.show {
 #response-wrapper .option.bg-info {
 	border-left-color: rgb(23, 162, 184);
 }
+#response-wrapper .option.bg-purple {
+	border-left-color: rgb(191, 0, 255);
+}
+#response-wrapper .option.bg-primary {
+	border-left-color: rgb(0, 123, 255);
+}
 
 #response-wrapper .option.ease {
 	opacity: 0;
@@ -189,6 +195,18 @@ html.show {
 }
 .option.bg-info::before {
 	background-image: linear-gradient(90deg, rgba(23, 162, 184,0.8) 0%, rgba(23, 162, 184,0.4) 100%);
+}
+.option.bg-purple {
+	background-image: linear-gradient(90deg, rgba(77, 0, 102,0.8) 0%, rgba(77, 0, 102,0.4) 100%);
+}
+.option.bg-purple::before {
+	background-image: linear-gradient(90deg, rgba(191, 0, 255,0.8) 0%, rgba(191, 0, 255,0.4) 100%);
+}
+.option.bg-primary {
+	background-image: linear-gradient(90deg, rgba(0, 49, 102,0.8) 0%, rgba(0, 49, 102,0.4) 100%);
+}
+.option.bg-primary::before {
+	background-image: linear-gradient(90deg, rgba(0, 123, 255,0.8) 0%, rgba(0, 123, 255,0.4) 100%);
 }
 
 @media (min-width: 1024px) {

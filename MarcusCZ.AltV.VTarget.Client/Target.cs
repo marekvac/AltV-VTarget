@@ -1,20 +1,16 @@
-﻿using System.Reflection;
-using AltV.Net.Client;
-using AltV.Net.Client.Async;
+﻿using AltV.Net.Client;
 using AltV.Net.Client.Elements.Data;
-using MarcusCZ.AltV.VTarget.Client.Data;
 using MarcusCZ.AltV.VTarget.Client.Options;
 using MarcusCZ.AltV.VTarget.Client.Providers;
 
 namespace MarcusCZ.AltV.VTarget.Client;
-public class Target : AsyncResource
+public class Target
 {
     private static VEye _eye;
     private static OptionRegistry _optionRegistry;
-    private MethodInfo _func;
     public static bool Debug;
 
-    public override void OnStart()
+    public void OnStart()
     {
         _optionRegistry = new OptionRegistry();
         _eye = new VEye(_optionRegistry);
@@ -28,12 +24,9 @@ public class Target : AsyncResource
             
             if (args[0] == "debug") Debug = !Debug;
         };
-        
-        _registerTestOptions();
-        Alt.Log("[VTarget] Started");
     }
 
-    public override void OnStop()
+    public void OnStop()
     {
         Alt.OnKeyDown -= OnKeyDown;
         Alt.OnKeyUp -= OnKeyUp;
@@ -60,40 +53,6 @@ public class Target : AsyncResource
         {
             _eye.StartTargeting();
         }
-    }
-
-    private void _registerTestOptions()
-    {
-        VEntityOption o1 = new("fas fa-times", "Door");
-        o1.Background = Background.SUCCESS;
-        VEntityOption o2 = new("fas fa-clock", "Option2");
-        o2.CanInteract = (_, _, _) => false;
-        o2.OnDisabledClick = (_, _, _, alert) => { alert(Background.DANGER, "This option is disabled");
-            return false;
-        };
-        VEntityOption c1 = new("fas fa-check", "children1");
-        c1.OnClick = (_, _, _, _) =>
-        {
-            Alt.Log("cliiick");
-            return false;
-        };
-        VEntityOption c2 = new("fas fa-check", "children2");
-        VEntityOption cc1 = new("fas fa-clock", "children21");
-        VEntityOption cc2 = new("fas fa-clock", "children22");
-        cc2.OnClick = (_, _, _, _) =>
-        {
-            Alt.Log("C2 cklicke");
-            return false;
-        };
-        o1.Bones = new List<string> {"door_dside_f"};
-        o1.Children = new List<IVTargetOption> {c1, c2};
-        c2.Children = new List<IVTargetOption> {cc1, cc2};
-        
-        _eye.OptionRegistry.RegisterGlobalVehicle(o1);
-        _eye.OptionRegistry.RegisterGlobalVehicle(o2);
-
-        VEntityOption oo = new("fas fa-cube", "Object option");
-        _eye.OptionRegistry.RegisterGlobalObject(1363150739, oo);
     }
 
     public static void RegisterGlobalVehicle(VEntityOption option) => _optionRegistry.RegisterGlobalVehicle(option);

@@ -49,6 +49,7 @@ public class VEntityOption : IVTargetOption
         string desc = Description ?? "";
         string bg = Background.ToString() ?? "";
         bg = bg.ToLower();
+        if (bg.Length > 0) bg = "bg-" + bg;
         object[] children = Array.Empty<object>();
         if (Children != null && Children.Count > 0)
         {

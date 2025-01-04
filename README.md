@@ -17,7 +17,6 @@ Create instance of main VTarget `Target` class and add calls for OnStart, OnStop
 ```C#
 using MarcusCZ.AltV.VTarget.Target;
 
-[Resource("yourresource")]
 class YourResource
 {
     private Target _vtarget;
@@ -39,7 +38,7 @@ class YourResource
 
 After building your project, don't forget copy dll file of VTarget (`MarcusCZ.AltV.VTarget.Client.dll`) and downloaded frontend files into your resource. And include it both in resource.toml to client-files section.
 
-## Basic principles
+## Concepts
 
 - Option - is one option of displayed menu.
 - Options can have children - that means, after clicking on one option, child menu can be displayed along with the main.
@@ -76,7 +75,7 @@ delegate bool VEntityOptionCheckCallback(uint entity, Vector3 pos, ISharedEntity
 <details>
   <summary>Example use</summary>
 
-Zobrazit option pouze, pokud má vozidlo odemčené dveře.
+Display option only if the vehicle is unlocked.
 
   ```csharp
   // option will be displayed only when the vehicle is unlocked
@@ -90,14 +89,14 @@ Zobrazit option pouze, pokud má vozidlo odemčené dveře.
 </details>
 
 ### CanInteract
-Decides whether the callback is disabled or not. Similar like `CanShow`
+Decides whether the option is disabled or not. Similar like `CanShow`
 
 ````csharp
 delegate bool VEntityOptionCheckCallback(uint entity, Vector3 pos, ISharedEntity? altEntity)
 ````
 
 ### OnClick
-Called when player clicks on the option. Callback returns bool value - ``true|false``, which decides if the menu should be refreshed. That can be useful when we have options for opening vehicle doors, but we don't want to show them, when the vehicle is locked. We have another option for unlocking vehicle, so when the player unlocks the vehicle from this option, we want the other options to appear immediately, without closing and opening the menu again.
+Called when player clicks on the option. Callback must return bool value - ``true|false``, which decides if the menu should be refreshed. That can be useful when we have options for opening vehicle doors, but we don't want to show them, when the vehicle is locked. We have another option for unlocking vehicle, so when the player unlocks the vehicle from this option, we want the other options to appear immediately, without closing and opening the menu again.
 
 ```csharp
 delegate bool VEntityOptionCallback(uint entity, Vector3 pos, ISharedEntity? altEntity, Alert alert);
@@ -110,7 +109,7 @@ delegate bool VEntityOptionCallback(uint entity, Vector3 pos, ISharedEntity? alt
 <details>
   <summary>Example</summary>
 
-If the vehicle is locked, unlock it, render alert and refresh the menu.
+If the vehicle is locked, unlock it, render alert and refresh the menu, so new options which were hidden until now, can show without reopening the menu.
 
   ```csharp
   // Option for unlocking vehicle
@@ -130,7 +129,7 @@ If the vehicle is locked, unlock it, render alert and refresh the menu.
 Called when option is ``disabled`` and player clicks on it. Same like `OnClick`
 
 ```csharp
-delegate bool VEntityOptionCallback(int entity, Vector3 pos, ISharedEntity? altEntity, Alert alert);
+delegate bool VEntityOptionCallback(uint entity, Vector3 pos, ISharedEntity? altEntity, Alert alert);
 ```
 
 ## Option registration for entities and objects

@@ -107,7 +107,7 @@ internal class WorldShapeTestProvider : IVProvider
         {
             o.Show = o.CanShow(entity, hitCoords, altEntity);
             
-            if (!o.EnableInVehicle) o.Show = !Alt.LocalPlayer.IsInVehicle;
+            if (o.Show && !o.EnableInVehicle) o.Show = !Alt.LocalPlayer.IsInVehicle;
 
             if (o.Show && o.Distance is not null && o.Distance < Vector3.Distance(hitCoords, Alt.LocalPlayer.Position))
             {

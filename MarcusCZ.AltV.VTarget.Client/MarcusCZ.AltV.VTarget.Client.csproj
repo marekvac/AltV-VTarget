@@ -1,14 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>MarcusCZ</Authors>
+        <Description>A 'third-eye' system for Alt:V.</Description>
+        <RepositoryUrl>https://github.com/marekvac/AltV-VTarget</RepositoryUrl>
+        <PackageTags>AltV</PackageTags>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AltV.Net.Client.Async" Version="16.1.1" />
+      <PackageReference Include="AltV.Net.Client.Async" Version="16.4.2" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Include="..\LICENSE.txt" Pack="true" PackagePath=""/>
+        <None Include="..\README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>
