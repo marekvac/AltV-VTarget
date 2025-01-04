@@ -19,7 +19,7 @@ Create instance of main VTarget `Target` class and add calls for OnStart, OnStop
 ```C#
 using MarcusCZ.AltV.VTarget.Target;
 
-class YourResource
+class YourResource : Resource
 {
     private Target _vtarget;
     
@@ -43,7 +43,7 @@ After building your project, don't forget copy dll file of VTarget (`MarcusCZ.Al
 ## Concepts
 
 - Option - is one option of displayed menu.
-- Options can have children - that means, after clicking on one option, child menu can be displayed along with the main.
+- Options can have children - that means, after clicking on one option, child menu can be displayed along with the main. It can be recursive (children can have another children), there is no limit for that (only screen size haha).
 - Options can be `disabled` - disabled options have greyed background and player cannot click* on them.
 - Options can have several conditions to display despite current circumstances.
   - `List<string> Bones` Player must aim at specific bone of entity.
