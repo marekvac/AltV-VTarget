@@ -38,7 +38,7 @@ class YourResource : Resource
 }
 ```
 
-After building your project, don't forget copy dll file of VTarget (`MarcusCZ.AltV.VTarget.Client.dll`) and downloaded frontend files into your resource. And include it both in resource.toml to client-files section.
+After building your project, don't forget copy dll file of VTarget (`MarcusCZ.AltV.VTarget.Client.dll`) and downloaded frontend files (content of the /web folder) into your resource. And include it both in resource.toml to client-files section. The front-end location must be ``@resource/client/web/index.html``
 
 ## Concepts
 
