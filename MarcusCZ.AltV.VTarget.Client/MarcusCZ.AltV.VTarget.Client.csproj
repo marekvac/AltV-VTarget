@@ -5,7 +5,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>MarcusCZ</Authors>
         <Description>A 'third-eye' system for Alt:V.</Description>
         <RepositoryUrl>https://github.com/marekvac/AltV-VTarget</RepositoryUrl>
