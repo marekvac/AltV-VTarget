@@ -4,7 +4,7 @@ A 'third-eye' system inspired by FiveM resource qtarget (ox_target) for AltV.
 
 This is abstracted version of my old roleplay framework, which I discontinued. And I think it still can be useful for someone, so I've decided to release it.
 
-This resource is written in C# and unfortunately because of callback structure, cannot be used from js. Only way to use this resource is to add the dll file into your C# resource project and use API methods directly. The reason is mentioned above - this was intended to be part of bigger C# framework, so there was no need to make it work with javascript.
+This resource is written in C# and unfortunately because of callback structure, cannot be used from js. Only way to use this resource is to add the dll file into your C# resource project and use API methods directly. The reason is mentioned above - this was intended to be part of bigger C# framework, so there was no need to make it work with javascript. But ofc pull request are welcome, if someone is willing to do any JS wrapper :)
 
 Resource is client-side only.
 
@@ -175,4 +175,4 @@ _vtarget.RegisterGlobalVehicle(option); // Register this option for all vehicles
 
 ## Option registration for PolyZones
 
-Please refer to my VZone resource.
+Please refer to my [VZone Resource VTarget API](https://github.com/marekvac/AltV-VZones/tree/master/MarcusCZ.AltV.VZones.Client.VTargetAPI)
